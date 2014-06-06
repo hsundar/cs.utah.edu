@@ -1,0 +1,44 @@
+---
+title: Big Data Computer Systems
+---
+
+Big Data Computer Systems
+=========================
+
+**Fall 2014**    day, time     MEB XXXX    
+
+*Catalog number*: CS XXXX    
+
+Overview
+~~~~~~~~
+
+The exponential increase in the quantity and quality of measurements and data holds tremendous promise for data-driven scientific discovery. However, much of this data remains unused as algorithms, to infer knowledge from that data, are unable to scale up to the amount of data being generated. This course will discuss and explore computer systems issues for the big data era. Tentative topics will include the big data applications, big data programming (mapreduce_, MPI_), big data storage, sustainable (energy-efficient) data processing, data reliability, as well as specific case studies for big data computer systems in the real world.
+Big data is a broad concept that covers many aspects of computer science. This course will focus on the computer systems aspect---for instance, how various parts of a big data computer system (hardware, system software, and applications) are put together? What are the appropriate approaches to realize high performance, scalability, and reliability in practical big data computer systems? 
+
+Students in the class are lucky to use the Apt_ system from the Flux_ research group.
+
+**Prerequisites**
+
+There is no formal prerequisite for this course but CS XXXX or equivalent programming experience is desired. Please contact the instructor if you are not sure whether you possess the necessary programming experience. Some projects might require knowledge of Numerical Methods or Linear Algebra (CS 3200). Students are not required to have this background, but do let the instructor know in case you do, so that relevant projects can be assigned.  
+
+The course is open to graduate as well as undergraduate students.
+
+**Assignments and Grading**:
+
+There will be a few programming assignments and a final project. The assignments will be based on materials discussed in class. Students will be divided into two sets (different or each assignment), solving the similar problems, but utilizing different frameworks: mapreduce_ and MPI_. You will run these on Apt_ which will allow us to reconfigure the system for both these frameworks. 
+
+The final project will be chosen (by you) from a variety of topics related to big data computer systems. The instructor will help you devise a concrete scope for your project. You will be asked to submit a project proposal several weeks before the final project due time. You should also be prepared to make a presentation of your final project. Your grade will be based on a combination of your assignments and the final project. No exams will be administered for this course.
+
+
+A tentative grade division is listed below.
+
+|       15% - assignment #1
+|       15% - assignment #2
+|       15% - assignment #3
+|       15% - assignment #4
+|       40% - final project
+
+.. _Flux: http://www.flux.utah.edu/  
+.. _Apt: http://www.flux.utah.edu/project/apt
+.. _MPI: http://www.mcs.anl.gov/research/projects/mpi/
+.. _mapreduce: http://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html
