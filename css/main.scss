@@ -5,7 +5,7 @@ $background: rgb(210, 215, 220);
     Typography
 */
 body {
-    font: normal 120%/1.6 "Cousine", sans-serif; /* ~18px */
+    font: normal 120%/1.6 "Open Sans", sans-serif; /* ~18px */
 		width: 60%; /* ~700px */
     /* media query transitions to smooth things out */
     transition: width .2s ease;
@@ -161,8 +161,7 @@ body {
             &:hover {
                 color: rgb(0, 0, 0);
             }
-        }
-
+        }				
 
         nav {
             float: right;
@@ -184,6 +183,29 @@ body {
     }
 
 }
+
+#footer .engine {
+	font-size: 80%;
+	text-align: right;
+	display: block;
+	right: 0;
+}
+
+.right { float: right; clear: left; }
+.left { float: left; clear: right; }
+.inset { 
+	border: 0px solid silver; 
+	padding: 2px;
+	margin: 0em 0.8em 0.8em 0.8em;
+}
+.right.inset { margin-right: 0 !important; }
+.left.inset { margin-left: 0 !important; }
+.quiet {
+	color: grey;
+	font-size: 0.875em;
+	line-height: 1.714em;
+}
+
 
 /*
     Media Queries
