@@ -1,11 +1,15 @@
 $foreground: rgb(78, 89, 99);
-$background: rgb(210, 215, 220);
+$background: whitesmoke;
+// rgb(210, 215, 220);
+
+$body-font: "Open Sans", sans-serif;
+$hdr-font:  "Raleway", sans-serif;
 
 /*
     Typography
 */
 body {
-    font: normal 120%/1.6 "Open Sans", sans-serif; /* ~18px */
+    font: normal 100%/1.4 $body-font; /* ~18px */
 		width: 60%; /* ~700px */
     /* media query transitions to smooth things out */
     transition: width .2s ease;
@@ -17,8 +21,18 @@ body {
     /* typography improvements */
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+
 }
 
+#page {
+  background: white;
+  padding: 3em 3em 1.5em 3em;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 8px #111;
+  -webkit-box-shadow: 2px 2px 8px #111;
+  -moz-box-shadow: 2px 2px 8px #111;
+}
+  
 h1, h2, h3, h4, h5, h6 {
     font-family: "Raleway", sans-serif;
 }
@@ -54,7 +68,7 @@ sup {
 
 blockquote {
     margin: 1.5em; /* 24px / 16px */
-		font-family: 'Raleway', Monospace;
+	font-family: $hdr-font;
     border-left: 0.3125em solid $foreground; /* 5px / 16px */
     padding: 0.125em 0.125em 0.125em 0.3125em; /* 2 (5)px / 16px */
 }
@@ -74,11 +88,12 @@ li {
 
 figure {
     img, embed, object, video, .embed {
-        max-width: 90%;
+        float: right;
+		max-width: 90%;
         margin: 0 auto;
         display: block;
-        border: 0.625em solid $foreground; /* 10px / 16px */
-        padding-bottom: 1.25em; /* 20px / 16px */
+        border: 0; /* 10px / 16px */
+        padding-bottom: 0; /* 20px / 16px */
         background: $foreground;
     }
 
@@ -101,43 +116,56 @@ header, nav {
     Header
 */
 body > header {
-        h1 {
-            float: left;
-            margin: 0.555555556em 0 0.555555556em 0; /* 10px / 18px */
-        }
+	position: relative;
+	// font-variant: small-caps;
+	line-height: 1em;
+	margin-top: .5em;
+	margin-bottom: 0;
+	// background: $foreground;
+		
+	h1 {
+		float: left;
+		line-height: 0.9em;
+		margin-bottom: 0;
+		display: block;
+	}
 
-        nav {
-            float: right;
-            margin-top: 2em; /* 32px / 16px */
-
-            ul {
-                margin: 0;
-                padding: 0;
+	nav {
+		float: right;
+		line-height: 0.9em;
+		margin-top: 1.8em; /* 32px / 16px */
+	
+		ul {
+			margin: 0;
+			padding: 0;
+			display: block;
                 
-                li {
-                    display: inline;
-                    font-family: "Raleway", sans-serif;
-                    font-weight: bold;
-                    margin: 0 0.222222222em 0 0.222222222em; /* 3px / 18px */
-                }
-            }
-        }
+			li {
+				display: inline;
+				font-family: $hdr-font;
+				font-weight: bold;
+				//                    margin: 0 0.222222222em 0 0.222222222em; /* 3px / 18px */
+			}
+		}
+	}
 
-        hr {
-            clear: both;
-        }
+	hr {
+		margin-top: 0;
+		margin-bottom: 0.3em;
+		clear: both;
+	}
 
-        a {
-            color: rgb(0, 0, 0);
+	a {
+		color: rgb(0, 0, 0);
 
-            &:visited {
-                color: rgb(0, 0, 0);
-            }
+		&:visited {
+			color: rgb(0, 0, 0);
+		}
 
-            &:hover {
-                color: $foreground;    
-            }
-        }  
+		&:hover {
+			color: $foreground;    
+		}
+	}  
 }
 
 /*
@@ -146,11 +174,13 @@ body > header {
 body {
     footer {
         overflow: auto;
-        background: $foreground;
+        color: $foreground;
         color: rgb(175, 189, 192);
         padding: 0.5%; /* 5px / 1000px */
         margin-bottom: 1.5em; /* 24px / 16px */
-
+		float: right;
+		font: 80% $hdr-font;
+		
         a {
             color: rgb(175, 189, 192);
 
@@ -183,29 +213,6 @@ body {
     }
 
 }
-
-#footer .engine {
-	font-size: 80%;
-	text-align: right;
-	display: block;
-	right: 0;
-}
-
-.right { float: right; clear: left; }
-.left { float: left; clear: right; }
-.inset { 
-	border: 0px solid silver; 
-	padding: 2px;
-	margin: 0em 0.8em 0.8em 0.8em;
-}
-.right.inset { margin-right: 0 !important; }
-.left.inset { margin-left: 0 !important; }
-.quiet {
-	color: grey;
-	font-size: 0.875em;
-	line-height: 1.714em;
-}
-
 
 /*
     Media Queries

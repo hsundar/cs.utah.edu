@@ -21,12 +21,14 @@ main = hakyllWith config $ do
         route   idRoute
         compile compressCssCompiler
 
+{-
     match (fromList ["about.rst", "contact.markdown"]) $ do
         route   $ setExtension "html"
         compile $ pandocMathCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
-						
+-}
+
     match "teaching/*" $ do
         route   $ setExtension "html"
         compile $ pandocMathCompiler
@@ -34,6 +36,13 @@ main = hakyllWith config $ do
             >>= relativizeUrls
 
     match "posts/*" $ do
+        route $ setExtension "html"
+        compile $ pandocMathCompiler
+            >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= relativizeUrls
+			
+    match "talks/*" $ do
         route $ setExtension "html"
         compile $ pandocMathCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
@@ -58,12 +67,18 @@ main = hakyllWith config $ do
     match "index.html" $ do
         route idRoute
         compile $ do
+            talks <- fmap (take 3) . recentFirst =<< loadAll "talks/*"
+            let indexCtx =
+                    listField "talks" postCtx (return talks) `mappend`
+                    constField "title" "Home"                `mappend`
+                    defaultContext
+{-			
             posts <- recentFirst =<< loadAll "posts/*"
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Home"                `mappend`
                     defaultContext
-
+-}					
             getResourceBody
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
