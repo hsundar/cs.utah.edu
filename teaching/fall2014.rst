@@ -5,9 +5,12 @@ title: Big Data Computer Systems
 Big Data Computer Systems
 =========================
 
-**Fall 2014**    day, time     MEB XXXX    
+**Fall 2014**    
 
-*Catalog number*: CS XXXX    
+| Mon,Wed  1:25pm-2:45pm     
+| MEB 3147    
+
+*Catalog number*: CS 5965/6995    
 
 Overview
 ~~~~~~~~

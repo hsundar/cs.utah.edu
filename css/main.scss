@@ -10,7 +10,7 @@ $hdr-font:  "Raleway", sans-serif;
 */
 body {
     font: normal 100%/1.4 $body-font; /* ~18px */
-		width: 60%; /* ~700px */
+		width: 80%; /* ~700px */
     /* media query transitions to smooth things out */
     transition: width .2s ease;
     -webkit-transition: width .2s ease;
@@ -222,6 +222,18 @@ body {
     body {
         width: 92%;
     }
+}
+
+@media screen and (max-device-width: 6in) {
+    body {
+        width: 100%;
+    }
+	
+	#page {
+	  padding: 0px 1px 0px 1px;
+	  border: 0;
+	}
+  
 }
 
 @media screen and (max-width: 774px) {
