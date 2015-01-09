@@ -10,7 +10,7 @@ Big Data Computer Systems
 | Mon,Wed  1:25pm-2:45pm     
 | MEB 3147    
 
-*Catalog number*: CS 5965/6995    
+*Catalog number*: CS 5965/6965    
 
 Overview
 ~~~~~~~~
@@ -18,7 +18,7 @@ Overview
 The exponential increase in the quantity and quality of measurements and data holds tremendous promise for data-driven scientific discovery. However, much of this data remains unused as algorithms---to infer knowledge from that data---are unable to scale up to the amount of data being generated. This course will discuss and explore computer systems issues for the big data era. Tentative topics will include big data applications, big data programming (mapreduce_, MPI_), big data storage, sustainable (energy-efficient) data processing, data reliability, as well as specific case studies for big data computer systems in the real world.
 Big data is a broad concept that covers many aspects of computer science. This course will focus on the computer systems aspect---for instance, how various parts of a big data computer system (hardware, system software, and applications) are put together? What are the appropriate approaches to realize high performance, scalability, and reliability in practical big data computer systems? 
 
-Students in the class are lucky to use the Apt_ system from the Flux_ research group.
+Students in the class are lucky to use the Apt_ system from the Flux_ research group. We shall be using github_ for submitting assignments and projects. All students should create a free github account and become part of the UtahCS6965_ organization on github_.
 
 **Prerequisites**
 
@@ -44,3 +44,6 @@ A tentative grade division is listed below.
 .. _Apt: http://www.flux.utah.edu/project/apt
 .. _MPI: http://www.mcs.anl.gov/research/projects/mpi/
 .. _mapreduce: http://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html
+.. _UtahCS6965: https://github.com/orgs/UtahCS6965
+.. _github: https://github.com 
+

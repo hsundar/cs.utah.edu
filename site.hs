@@ -9,7 +9,7 @@ import           Hakyll
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
-    match ("images/*.png" .||. "images/*.jpg" .||. "files/**") $ do
+    match ("images/*.png" .||. "images/*.jpg" .||. "images/svg/*.svg" .||. "files/**" .||. "teaching/bigdata/*.pdf" .||. "teaching/bigdata/*.gz") $ do
         route   idRoute
         compile copyFileCompiler
 
@@ -17,7 +17,7 @@ main = hakyllWith config $ do
         route $ setExtension "css"
         compile sassCompiler
 
-    match "css/*.css" $ do
+    match ("css/*.css" .||. "css/theme/*.css") $ do
         route   idRoute
         compile compressCssCompiler
 
@@ -28,8 +28,19 @@ main = hakyllWith config $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 -}
+    match "teaching/paralg/slides/*.md" $ do
+        route   $ setExtension "html"
+        compile $ pandocMathCompiler
+            >>= loadAndApplyTemplate "templates/slides.html" defaultContext
+            >>= relativizeUrls
 
-    match "teaching/*" $ do
+    match ("teaching/bigdata/*.md" .||. "teaching/paralg/*.md") $ do
+        route   $ setExtension "html"
+        compile $ pandocMathCompiler
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
+
+    match "teaching/*.md" $ do
         route   $ setExtension "html"
         compile $ pandocMathCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
@@ -41,13 +52,13 @@ main = hakyllWith config $ do
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
-	
+
     match "research/*.md" $ do
         route $ setExtension "html"
         compile $ pandocMathCompiler
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
-			
+
     match "talks/*" $ do
         route $ setExtension "html"
         compile $ pandocMathCompiler
@@ -119,6 +130,6 @@ pandocMathCompiler =
 --------------------------------------------------------------------------------
 config :: Configuration
 config = defaultConfiguration
-        {   deployCommand = "rsync -avz -e ssh ./_site/ shell.cs.utah.edu:~/public_html/"}
+        {   deployCommand = "rsync -rltogDvz -e ssh ./_site/ shell.cs.utah.edu:~/public_html/"}
 
 --------------------------------------------------------------------------------
