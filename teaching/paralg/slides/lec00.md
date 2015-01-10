@@ -4,7 +4,7 @@ theme: white
 ---
 
 <section>
-# Parallel Algorithms
+# Parallel Computing
 ### Spring 2015 - CS:6230
 
 [Hari Sundar](http://www.cs.utah.edu/~hari), MEB 3454     
@@ -323,19 +323,19 @@ potential performance
 
 | Network     		| Nodes\ \ \ \ \ \  	| Deg \ \ 	| Diameter\ \  	| Bisec. W. \ \ \  	| Edge L. 	|
 |-------------------|:----------:	|:------:	|:--------:	|:---------------:	|------------:	|
-| bus/star    		|    $k+1$   	|   $k$  	|     2    	|        1        	|         var 	|
-| crossbar    		|  $k^2+2k$  	|    4   	|  2(k+1)  	|       $k$       	|         var 	|
-| 1-D mesh    		|     $k$    	|    2   	|   $k-1$  	|        1        	|       const 	|
-| 2-D mesh    		|    $k^2$   	|    4   	| $2(k-1)$ 	|       $k$       	|       const 	|
-| 3-D mesh    		|    $k^3$   	|    6   	| $3(k-1)$ 	|      $k^2$      	|       const 	|
+| bus/star    		|    $k+1$   	|   $k$  	|     $2$  	|       $1$        	|         var 	|
+| crossbar    		|  $k^2+2k$  	|    $4$   	|  $2(k+1)$	|       $k$       	|         var 	|
+| 1-D mesh    		|     $k$    	|    $2$   	|   $k-1$  	|        $1$        	|       const 	|
+| 2-D mesh    		|    $k^2$   	|    $4$   	| $2(k-1)$ 	|       $k$       	|       const 	|
+| 3-D mesh    		|    $k^3$   	|    $6$   	| $3(k-1)$ 	|      $k^2$      	|       const 	|
 | n-D mesh    		|    $k^n$   	|  $2n$  	| $n(k-1)$ 	|    $k^{n-1}$    	|         var 	|
-| 1-D torus   		|     $k$    	|    2   	|   $k/2$  	|        2        	|       const 	|
-| 2-D torus   		|    $k^2$   	|    4   	|    $k$   	|       $2k$      	|       const 	|
-| 3-D torus   			|    $k^3$   	|    6   	|  $3k/2$  	|      $2k^2$     	|       const 	|
+| 1-D torus   		|     $k$    	|    $2$   	|   $k/2$  	|        $2$        	|       const 	|
+| 2-D torus   		|    $k^2$   	|    $4$   	|    $k$   	|       $2k$      	|       const 	|
+| 3-D torus   			|    $k^3$   	|    $6$   	|  $3k/2$  	|      $2k^2$     	|       const 	|
 | n-D torus   			|    $k^n$   	|  $2n$  	|  $nk/2$  	|    $2k^{n-1}$   	|         var 	|
-| binary tree\ \ \ \ \ 	|   $2^k-1$  	|    3   	| $2(k-1)$ 	|        1        	|         var 	|
+| binary tree\ \ \ \ \ 	|   $2^k-1$  	|    $3$   	| $2(k-1)$ 	|       $1$     	|         var 	|
 | hypercube   			|    $2^k$   	|   $k$  	|    $k$   	|    $2^{k-1}$    	|         var 	|
-| butterﬂy    			| $(k+1)2^k$ 	|    4   	|   $2k$   	|      $2^k$      	|         var 	|
+| butterﬂy    			| $(k+1)2^k$ 	|    $4$   	|   $2k$   	|      $2^k$      	|         var 	|
 
 </section>
 
@@ -433,6 +433,52 @@ For most real parallel systems, $ts \gg tw$
 
 </section>
 
+<section>
+## collective communication
+
+<br>
+
+<div align=left>
+multiple nodes communicating simultaneously in systematic pattern, such as
+
+* **broadcast** : one-to-all
+* **multinode broadcast** : all-to-all
+* **scatter** /**gather** : one-to-all/all-to-one
+* **total** or complete exchange : personalized all-to-all
+* **reduction** 
+* **scan** or **preﬁx**
+* **circular shift**
+* **barrier**
+
+</div>
+</section>
+
+<section>
+## broadcast
+<div align=left>
+source node sends the same message to each of $p-1$ other nodes
+
+<br>
+
+generic broadcast algorithm generates *spanning tree* with source node as root
+
+<br>
+
+<blockquote>
+**if** source $\neq$ me **then**   
+\ \ \ \ receive message   
+**end**	   
+**foreach** neighbor    
+\ \ \ \ **if** neighbor has not already received message **then**   
+\ \ \ \ \ \ \ \ send message to neighbor    
+\ \ \ \ **end**    
+**end**
+	
+</blockquote>
+
+</div>
+
+</section>
 
 </section>
 
