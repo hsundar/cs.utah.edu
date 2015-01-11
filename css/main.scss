@@ -78,7 +78,7 @@ pre {
     width: 90%;
     overflow: auto;
     margin: 0.625em auto; /* 10px / 16px */
-	padding: 0.25em 0em 0.25em 0.625em;
+	  padding: 0.25em 0em 0.25em 0.625em;
     font-family:'Anonymous Pro';
 	font-size: 0.9em; /* 14px / 16px */
 }
@@ -90,7 +90,7 @@ li {
 figure {
     img, embed, object, video, .embed {
         float: right;
-		max-width: 90%;
+		    max-width: 90%;
         margin: 0 auto;
         display: block;
         border: 0; /* 10px / 16px */
@@ -225,18 +225,6 @@ body {
     }
 }
 
-@media screen and (max-device-width: 6in) {
-    body {
-        width: 100%;
-    }
-	
-	#page {
-	  padding: 0px 1px 0px 1px;
-	  border: 0;
-	}
-  
-}
-
 @media screen and (max-width: 774px) {
     body {
         font-size: 90%; /* 14.4px / 16px */
@@ -267,6 +255,18 @@ body {
             }
         }
     }
+}
+
+@media screen and (max-device-width: 6in) {
+  body {
+    width: 100%;
+  }
+  
+  #page {
+    padding: 0px 1px 0px 1px;
+    border: 0;
+  }
+  
 }
 
 @media screen and (min-width: 1080px) {

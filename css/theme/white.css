@@ -133,4 +133,17 @@ body {
  * SLIDE NUMBER
  *********************************************/
 .reveal .slide-number {
-  color: #e7ad52; }
+  color: #175da2; }
+
+/***** code font *******/
+pre.sourceCode { font-size: 24px; }
+
+pre {
+  background: rgb(223, 228, 229);
+  width: 90%;
+  /* overflow: auto; */
+  margin: 0.625em auto; /* 10px / 16px */
+  padding: 0.25em 0em 0.25em 0.625em;
+  font-family:'Anonymous Pro';
+  font-size: 0.9em; /* 14px / 16px */
+}

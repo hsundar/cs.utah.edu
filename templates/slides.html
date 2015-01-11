@@ -49,7 +49,7 @@
   </div>
 
   <!-- Lets add a logo here -->
-  <div style="position: absolute; bottom: 10px; left: 100%; margin-left: -70px">
+  <div style="position: absolute; bottom: 10px; right: 100%; margin-right: -70px">
     <IMG width=60 src="/images/svg/Ulogo.svg">
   </div>
 
@@ -62,10 +62,13 @@
   // Full list of configuration options available here:
   // https://github.com/hakimel/reveal.js#configuration
   Reveal.initialize({
-    controls: false,
+    controls: true,
     progress: true,
     history: true,
     center: true,
+    slideNumber: true,
+    touch: true,
+    help: false,
 
     theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
     transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
@@ -77,19 +80,10 @@
     // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
     // parallaxBackgroundSize: '2100px 900px',
 
-    // See http://docs.mathjax.org/en/latest/config-files.htm
-    // math: {
-    //  mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
-    //  config: 'TeX-AMS-MML_HTMLorMML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
-    // },
-
     // Optional libraries used to extend on reveal.js
     dependencies: [
     { src: '/files/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-    // { src: '/files/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-    // { src: '/files/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
     { src: '/files/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-    // { src: '/files/plugin/math/math.js', async: true }
     ]
   });
 

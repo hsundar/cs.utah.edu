@@ -14,6 +14,7 @@ WEB L120 - MW 3-4:20pm
 </section>
 
 <section>
+<section>
 # overview
 </section>
 
@@ -87,12 +88,13 @@ WEB L120 - MW 3-4:20pm
 		* scalability - rankings
 
 </section>
+</section>
 
+<section>
 <section>
 # motivation
 </section>
 
-<section>
 <section>
 ### why parallel computing?
 <br>
@@ -101,27 +103,6 @@ WEB L120 - MW 3-4:20pm
 * provides cost-effective (often only) means of meeting enormous resource demands of large-scale simulations
 * leverages existing resources or relatively inexpensive commodity parts
 * offers alternative when individual processor speeds ultimately reach limits imposed by fundamental physical laws
-</section>
-
-<section>
-## large-scale simulations
-</section>
-
-
-<section>
-## inverse problems & inference from data
-</section>
-
-
-<section>
-## prediction & decision making 
-</section>
-
-
-<section>
-## uncertainty quantification & design of experiments
-</section>
-
 </section>
 
 <section>
@@ -143,6 +124,13 @@ Nevertheless, insatiable appetite of computational scientists for
 ever greater computing capability has led them to embrace
 large-scale parallelism
 </div>
+</section>
+</section>
+
+<section>
+
+<section>
+# architectures
 </section>
 
 <section>
@@ -199,7 +187,6 @@ problem data
 * **interconnection network** : topology, switching, routing?
 </section>
 
-<section>
 <section>
 ## distributed vs shared memory
 
@@ -434,32 +421,109 @@ For most real parallel systems, $ts \gg tw$
 </section>
 
 <section>
-## collective communication
+## SPMD basics
+
+<div align=left>
+
+* **size** : total number of processors/tasks involved in computation - $p$
+* **rank** : id for a particular task in the computation - $(0,\cdots,p-1)$
+
+</div>
 
 <br>
 
+### two basic communication constructs
+
 <div align=left>
-multiple nodes communicating simultaneously in systematic pattern, such as
 
-* **broadcast** : one-to-all
-* **multinode broadcast** : all-to-all
-* **scatter** /**gather** : one-to-all/all-to-one
-* **total** or complete exchange : personalized all-to-all
-* **reduction** 
-* **scan** or **preﬁx**
-* **circular shift**
-* **barrier**
+* `send (data, to_proc_i)`
+* `recv (data, from_proc_j)`
+* **blocking** as well as **non-blocking** variants
 
+</div> 
+
+</section>
+
+<section>
+## communicator (\  `MPI_Comm`\  )
+
+<div align=left>
+<br>
+
+* determines the scope within which a point-to-point or collective operation is to operate
+	* size and rank are defined in terms of the communicator
+* communicators are dynamic
+	* they can be created and destroyed during program execution
+	* `MPI_COMM_WORLD` 
+
+</div>
+
+<br>
+
+```bash
+$ mpirun -np 4 ./hello
+```
+</section>
+
+<section>
+## collective communications
+
+<br>
+
+multiple nodes communicating simultaneously in systematic pattern
+
+<br>
+
+#### Barrier 
+
+```c
+    int MPI_Barrier (MPI_Comm comm);
+```
+
+* synchronize all processes belonging to a communicator 
+* **avoid**, except for debugging
+
+</section>
+
+<section>
+## MPI collectives
+<div align=left>
+<br>
+
+#### data movement
+
+* broadcast
+* gather / scatter
+* all_gather
+* all_to_all
+
+<br>
+
+#### global computation
+
+* reduce
+* scan ( prefix )
 </div>
 </section>
 
 <section>
 ## broadcast
-<div align=left>
+
 source node sends the same message to each of $p-1$ other nodes
+```c
+int MPI_Bcast (void* buffer, int count, MPI_Datatype datatype, 
+               int root, MPI_Comm comm);
+```
+
+<img style="border:1px white" width=800 src="/images/svg/broadcast.svg"></img>
+
+</section>
+
+<section>
+## broadcast
 
 <br>
-
+<div align=left>
 generic broadcast algorithm generates *spanning tree* with source node as root
 
 <br>
@@ -480,13 +544,40 @@ generic broadcast algorithm generates *spanning tree* with source node as root
 
 </section>
 
+<section>
+## broadcast
+
+<img style="border:1px white" width=800 src="/images/svg/broadcast_examples.svg"></img>
+
+</section>
+
+<section>
+## broadcast
+
+<br>
+
+<div align=left>
+Cost of broadcast depends on network, for example
+
+------------|------------------------------
+1-D mesh 	| $T=(p-1)(t_s + t_wL)$
+2-D mesh  | $T=2(\sqrt{p}-1)(t_s + t_wL)$
+hypercube \ \ \ \ \ \ \ \  | $T=\log p (t_s + t_wL)$
+</div>
+</section>
+
+</section>
+
+<section>
+<section>
+#MPI
+### building & running 
 </section>
 
 <section>
 ### hello mpi
 
-```c 
-
+```c   
 #include <stdio.h>
 #include <mpi.h>
 
@@ -503,6 +594,13 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 ```
+
+</section>
+
+<section>
+# [assignment 0](/teaching/paralg/assignment0.html)
+
+</section>
 
 </section>
 
