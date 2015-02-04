@@ -1,4 +1,8 @@
-# [CS 6230: Parallel Computing and High Performance Computing](/teaching/spring2015.html)
+# [CS 6230: Parallel and High Performance Computing](/teaching/spring2015.html)
+
+Office Hours: Wed 1-3pm MEB 3454
+
+**TA**: [Vairavan Sivaraman](vairavan.sivaraman@utah.edu) - TTh 12-2pm MEB 3159
 
 ## [Schedule, Lectures Slides & Readings](/teaching/paralg/schedule.html)
 
@@ -29,6 +33,10 @@ Adherence to the CoE and SoC academic guidelines is expected. Please read the fo
 
 * [College of Engineering Academic Guidelines from their web page](http://www.coe.utah.edu/wp-content/uploads/pdf/faculty/semester_guidelines.pdf)
 * [School of Computing Misconduct Policy Please Read](http://www.cs.utah.edu/graduate/cheating_policy)
+
+### Stampede & Tangent
+
+We shall be using two clusters for the assignments and projects. The first one is [Tangent](https://wiki.chpc.utah.edu/display/DOCS/Tangent+User+Guide) that is managed by [CHPC](https://www.chpc.utah.edu/) at the U. Tangent has 64 nodes each with 16 cores and 64GB of RAM. I recommend that you use this cluster for smaller tasks and debugging. We also have access to [Stampede](https://portal.tacc.utexas.edu/user-guides/stampede), the 7th fastest supercomputer in the world according to [top500](http://www.top500.org/list/2014/11/). Stampede has 6400 nodes each with 16 sandy bridge cores, 32GB of RAM and an Intel Xeon Phi accelerator card. We will be using Stampede for large scalability studies. Please fill out [this form](http://goo.gl/forms/K73b0KsRy7) as soon as possible to get access to these machines. I would also recommend that everyone install MPI locally on their machines.   
 
 ### Workload
 

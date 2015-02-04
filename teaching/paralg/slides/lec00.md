@@ -1,5 +1,5 @@
 ---
-title: CS6230: HPC & Parallel Algorithms
+title: CS6230: Parallel Algorithms & HPC
 theme: white
 ---
 
@@ -19,6 +19,18 @@ WEB L120 - MW 3-4:20pm
 </section>
 
 <section>
+# scope   
+
+<br>
+
+### scalable algorithms    
+
+<br>
+
+### efficient implementations 
+</section>
+
+<section>
 
 ## outline
 
@@ -33,6 +45,7 @@ WEB L120 - MW 3-4:20pm
 	* Fast Transforms - FFT, Multigrid, Gauss
 	* $n$-body Algorithms - Fast Multipole Methods, Tree codes, nearest neighbors
 	* Time parallelism (parareal algorithms)
+* Optional topics
 
 </section>
 
@@ -52,13 +65,16 @@ WEB L120 - MW 3-4:20pm
 <section>
 ## Logistics
 
-* 3-4 assignments
-* midterm
+* 3-4 assignments - individual 
+* midterm exam
 * final project
 	* teams of two
 	* project proposals due by end of february
-	* project reports
-	* project presentations
+	* project reports & presentations
+
+<br>	
+	
+#### no extensions
 </section>
 
 <section>
@@ -66,12 +82,12 @@ WEB L120 - MW 3-4:20pm
 
 * Primarily using MPI and OpenMP
 	* modern C/C++ compiler
-	* install openmpi or mpich on your machine
+	* install [openmpi](http://www.open-mpi.org/) or [mpich](http://www.mpich.org/) on your machine
 	* good for development and small debugging
 * Clusters
-	* CHPC - Kingspeak - 16 nodes with 16 cores each
-	* XSEDE - Stampede
-		* 256 nodes with 16 cores each
+	* CHPC - [Tangent][] - 64 nodes with 16 cores each
+	* XSEDE - [Stampede][]
+		* 6400(256) nodes with 16 cores each
 		* will also consider Intel Xeon Phi later in course
 </section>
 
@@ -88,6 +104,7 @@ WEB L120 - MW 3-4:20pm
 		* scalability - rankings
 
 </section>
+
 </section>
 
 <section>
@@ -96,7 +113,35 @@ WEB L120 - MW 3-4:20pm
 </section>
 
 <section>
-### why parallel computing?
+## scientific discovery
+### inference, prediction, decision making	
+<br>
+
+#### in the past, largely driven by	
+
+* experiments
+	* expensive
+	* impossible
+	* hazardous
+	* difficult to reproduce
+
+<br>
+
+#### ever increasingly, 
+
+* computational science & engg.
+* *in silico* experiments
+</section>
+
+<section>
+## experiments vs simulation
+
+<img style="border:1px white" width=1000 src="/images/svg/SimExp.svg"></img>
+
+</section>
+
+<section>
+## why parallel computing?
 <br>
 <br>
 
@@ -120,7 +165,7 @@ Parallel computing should be approached with caution
 <br>
 
 <div align=justify>
-Nevertheless, insatiable appetite of computational scientists for
+Nevertheless, the insatiable appetite of computational scientists for
 ever greater computing capability has led them to embrace
 large-scale parallelism
 </div>
@@ -148,7 +193,7 @@ conventional serial computers
 special purpose, “data parallel” computers
 
 **MISD** : multiple instruction streams, single data stream
-not particularly useful, except perhaps in “pipelining”
+not particularly useful 
 
 **MIMD** : multiple instruction streams, multiple data streams
 general purpose parallel computers
@@ -598,6 +643,35 @@ int main(int argc, char *argv[]) {
 </section>
 
 <section>
+### compiling & running
+
+```bash
+$ mpicc -o hello hello_mpi.c 
+$ mpirun -np 8 ./hello
+$
+$ sbatch batch.sh
+```
+
+```bash
+#!/bin/bash
+#SBATCH -J hello        # Job name
+#SBATCH -o hello.o%j    # name of output file (%j expands to jobID)
+#SBATCH -N 1 -n 16      # total number of mpi tasks requested
+#SBATCH -p normal       # Queue name --- normal, development, etc.
+#SBATCH -t 00:30:00     # run time (hh:mm:ss)
+#SBATCH -A TG-CDA150001 # account 
+
+set -x                 # echo commands
+
+cd $HOME/hello
+
+ibrun tacc_affinity ./hello
+
+```
+
+</section>
+
+<section>
 # [assignment 0](/teaching/paralg/assignment0.html)
 
 </section>
@@ -608,6 +682,14 @@ int main(int argc, char *argv[]) {
 <section>
 # readings
 
+* [Intro to Sequential Algorithms](/teaching/bigdata/seqAlgIntro.pdf) 
+* [Intro to Parallel Algorithms](/teaching/bigdata/book92-JaJa-parallel.algorithms.intro.pdf) - first chapter of Jájá's book.
+* [Parallel Algorithms](/teaching/bigdata/preprint96-Blelloch.Maggs-Parallel.Algorithmcs.pdf)
 * [Parallel Computing - Blaise Barney, Lawrence Livermore National Laboratory](https://computing.llnl.gov/tutorials/parallel_comp/)
+* [MPI Reference](/teaching/bigdata/book96-Dongarra-MPI.The.Complete.Reference.pdf)
 
 </section>
+
+
+[Tangent]: https://wiki.chpc.utah.edu/display/DOCS/Tangent+User+Guide
+[Stampede]: https://portal.tacc.utexas.edu/user-guides/stampede
